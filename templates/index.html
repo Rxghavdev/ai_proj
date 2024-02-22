@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIdocs - File Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .upload-section {
+            flex: 1;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px 0 0 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .upload-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 15px 30px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            outline: none;
+        }
+
+        .upload-btn:hover {
+            background-color: #45a049;
+        }
+
+        .upload-btn:active {
+            background-color: #3e8e41;
+        }
+
+        .upload-btn:focus {
+            outline: none;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .file-name {
+            font-size: 14px;
+            color: #555555;
+        }
+
+        .image-section {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .image-container {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="upload-section">
+            <div class="file-upload">
+                <label for="file-upload" class="upload-btn">Browse Files</label>
+                <input id="file-upload" type="file" name="file" accept=".csv, .txt, .pdf">
+                <p class="file-name">Upload your file</p>
+            </div>
+            <div class="document-container" id="document-container" style="display: none;">
+                <h2>Document Uploaded</h2>
+                <p id="document-name"></p>
+            </div>
+        </div>
+        <div class="image-section">
+            <div class="image-container">
+                <img src="/pic.png" alt="s">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('file-upload').addEventListener('change', function() {
+            var filename = this.value.split('\\').pop();
+            document.querySelector('.file-name').textContent = filename;
+            document.getElementById('document-container').style.display = 'block';
+            document.getElementById('document-name').textContent = filename;
+        });
+    </script>
+</body>
+</html>
